@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
-        return view('admin.category.index', compact('categories'));
+        $tags = Tag::orderBy('created_at', 'desc')->get();
+        return view('admin.tag.index', compact('tags'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.tag.create');
     }
 
     /**
@@ -38,19 +38,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $input = $request->only(['title', 'description']);
-        $category = Category::create($input);
+        $category = Tag::create($input);
 
         if (!$category) {
             $request->flash();
             return back()->with([
                 'status' => false,
-                'message' => 'Error when add category',
+                'message' => 'Error when add Tag',
                 'messageClass' => 'alert-danger'
             ]);
         } else {
             return back()->with([
                 'status' => true,
-                'message' => 'Add category successful',
+                'message' => 'Add Tag successful',
                 'messageClass' => 'alert-success'
             ]);
         }
@@ -75,8 +75,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        $tag = Tag::find($id);
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -89,19 +89,19 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->only('title', 'description', 'status');
-        $category = Category::find($id);
-        $category->update($input);
+        $tag = Tag::find($id);
+        $tag->update($input);
 
-        if (!$category) {
+        if (!$tag) {
             return back()->with([
                 'status' => false,
-                'message' => 'Error when update category',
+                'message' => 'Error when update tag',
                 'messageClass' => 'alert-danger'
             ]);
         } else {
             return back()->with([
                 'status' => true,
-                'message' => 'Update category successful',
+                'message' => 'Update tag successful',
                 'messageClass' => 'alert-success'
             ]);
         }
@@ -115,20 +115,20 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $tag = Tag::find($id);
 
-        if ($category) {
-            $category->delete();
+        if ($tag) {
+            $tag->delete();
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'This category not exist',
+                'message' => 'This tag not exist',
                 'messageClass' => 'alert-danger'
             ]);
         }
         return response()->json([
             'status' => true,
-            'message' => 'Delete category successful',
+            'message' => 'Delete tag successful',
             'messageClass' => 'alert-success'
         ]);
     }

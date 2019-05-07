@@ -458,8 +458,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/reports/transactions.html">List</a></li>
-                        <li><a href="pages/reports/top-gainers-losers.html">Add new</a></li>
+                        <li><a href="{{ route('admin.tag.index')  }}">List</a></li>
+                        <li><a href="{{ route('admin.tag.create')  }}">Add new</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

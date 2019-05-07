@@ -28,4 +28,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/category/edit/{id}', 'Admin\CategoryController@edit')->name('admin.category.edit');
     Route::put('/category/{id}', 'Admin\CategoryController@update')->name('admin.category.update');
     Route::delete('/category/{id}', 'Admin\CategoryController@destroy')->name('admin.category.destroy');
+
+    // Tag group
+    Route::get('/tag', 'Admin\TagController@index')->name('admin.tag.index');
+    Route::get('/tag/create', 'Admin\TagController@create')->name('admin.tag.create');
+    Route::post('/tag/store', 'Admin\TagController@store')->name('admin.tag.store');
+    Route::get('/tag/edit/{id}', 'Admin\TagController@edit')->name('admin.tag.edit');
+    Route::put('/tag/{id}', 'Admin\TagController@update')->name('admin.tag.update');
+    Route::delete('/tag/{id}', 'Admin\TagController@destroy')->name('admin.tag.destroy');
 });

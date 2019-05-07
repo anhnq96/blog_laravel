@@ -11,11 +11,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                All Category
+                All Tag
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Category</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.tag.index') }}">Tag</a></li>
                 <li class="breadcrumb-item active">All</li>
             </ol>
         </section>
@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">All Category</h3>
+                            <h3 class="box-title">All Tag</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -42,24 +42,24 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
-                                        <tr class="category-row" data-id="{{ $category->id }}">
-                                            <td>{{ $category->title }}</td>
-                                            <td>{{ $category->description }}</td>
+                                    @foreach($tags as $tag)
+                                        <tr class="category-row" data-id="{{ $tag->id }}">
+                                            <td>{{ $tag->title }}</td>
+                                            <td>{{ $tag->description }}</td>
                                             <td>
-                                                @if($category->status  === 0)
+                                                @if($tag->status  === 0)
                                                     <span class="label label-success">Active</span>
                                                 @else
                                                     <span class="label label-danger">Inactive</span>
                                                 @endif
                                             </td>
                                             <td class="text-right">
-                                                <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                <a href="{{ route('admin.tag.edit', $tag->id) }}"
                                                    class="btn btn-default">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-default"
-                                                        onclick="showConfirm('{{ $category->id }}');">
+                                                        onclick="showConfirm('{{ $tag->id }}');">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </td>
@@ -106,7 +106,7 @@
         function showConfirm(id) {
             swal({
                 title: "Are you sure?",
-                text: "You will not be able to recover this category!",
+                text: "You will not be able to recover this tag!",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -121,7 +121,7 @@
                     showLoaderOnConfirm: true,
                 });
                 var token = $("meta[name='csrf-token']").attr("content");
-                var base = '{!! route('admin.category.destroy', ':id') !!}';
+                var base = '{!! route('admin.tag.destroy', ':id') !!}';
                 url = base.replace(':id', id);
                 console.log(url);
                 $.ajax({
