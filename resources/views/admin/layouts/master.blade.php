@@ -11,6 +11,7 @@
 
     <title>Unique Admin - Dashboard</title>
 
+    @stack('head')
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor_components/bootstrap/dist/css/bootstrap.css') }}">
 
@@ -26,7 +27,6 @@
     <!-- jQuery 3 -->
     <script src="{{ asset('admin/assets/vendor_components/jquery/dist/jquery.js') }}"></script>
 
-    @stack('head')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -432,8 +432,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/reports/transactions.html">List</a></li>
-                        <li><a href="pages/reports/top-gainers-losers.html">Add new</a></li>
+                        <li><a href="{{ route('admin.post.index')  }}">List</a></li>
+                        <li><a href="{{ route('admin.post.create')  }}">Add new</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

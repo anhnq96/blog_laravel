@@ -36,4 +36,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/tag/edit/{id}', 'Admin\TagController@edit')->name('admin.tag.edit');
     Route::put('/tag/{id}', 'Admin\TagController@update')->name('admin.tag.update');
     Route::delete('/tag/{id}', 'Admin\TagController@destroy')->name('admin.tag.destroy');
+
+    // Tag group
+    Route::get('/post', 'Admin\PostController@index')->name('admin.post.index');
+    Route::get('/post/create', 'Admin\PostController@create')->name('admin.post.create');
+    Route::post('/post/store', 'Admin\PostController@store')->name('admin.post.store');
+    Route::get('/post/edit/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
+    Route::put('/post/{id}', 'Admin\PostController@update')->name('admin.post.update');
+    Route::delete('/post/{id}', 'Admin\PostController@destroy')->name('admin.post.destroy');
 });
